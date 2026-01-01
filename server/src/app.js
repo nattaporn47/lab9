@@ -19,7 +19,7 @@ const port = config.port
 
 sequelize.sync({ force: false })
     .then(() => {
-        app.listen(config.port, () => {
+        app.listen(config.port, '0.0.0.0', () => {
             console.log('Server running on port ' + port)
         })
     })
