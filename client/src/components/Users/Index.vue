@@ -6,14 +6,28 @@
 </template>
 
 <script>
+import axios from "axios"; // Import axios เข้ามาใช้งานโดยตรง
+
 export default {
+  data() {
+    return {
+      users: [],
+    };
+  },
+
   // Logic จะเขียนตรงนี้
-    methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    }
+  methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    },
+  },
+
+  async created(){
+    const response = await axios.get("http://localhost:8081/users")
+    this.users = response.data;
+    console.log("Fetched users:", this.users);
   }
-}
+};
 </script>
 
 <style scoped>
