@@ -1,12 +1,15 @@
 // const isAuthenController = require('./controllers/isAuthenController')
 const UserController = require('./controllers/UserController')
-// const UserAuthenController = require('./controllers/UserAuthenController')
+const UserAuthenController = require('./controllers/UserAuthenController')
 // const BlogController = require('./controllers/BlogController')
 
 // const UploadController = require('./controllers/UploadController')
 // const fileUploadMiddleware = require('./middleware/fileUpload') // Import Middleware
 
 module.exports = (app) => {
+  // ... routes เดิม
+    app.post('/login', UserAuthenController.login)
+    app.post('/register', UserAuthenController.register)
   // เส้นทางเดิมจากบทที่ 4 (ถ้าอยากเก็บไว้)
   // app.get('/status', (req, res) => res.send('server is running'))
 
