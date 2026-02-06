@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import AuthenService from '../../services/AuthenService';
-import { useAuthenStore } from '../../stores/authen'; // เรียกใช้ Store
+import AuthenService from '../services/AuthenService';
+import { useAuthenStore } from '../stores/authen'; // เรียกใช้ Store
 
 export default {
   data () {
