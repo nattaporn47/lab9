@@ -1,4 +1,4 @@
-// const isAuthenController = require('./controllers/isAuthenController')
+const isAuthenController = require('./controllers/isAuthenController')
 const UserController = require('./controllers/UserController')
 const UserAuthenController = require('./controllers/UserAuthenController')
 // const BlogController = require('./controllers/BlogController')
@@ -10,6 +10,7 @@ module.exports = (app) => {
   // ... routes เดิม
     app.post('/login', UserAuthenController.login)
     app.post('/register', UserAuthenController.register)
+    app.get('/users', isAuthenController, UserController.index)
   // เส้นทางเดิมจากบทที่ 4 (ถ้าอยากเก็บไว้)
   // app.get('/status', (req, res) => res.send('server is running'))
 

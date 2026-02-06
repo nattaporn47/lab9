@@ -11,6 +11,7 @@
       <p><button v-on:click="navigateTo('/user/'+user.id)">ดูข้อมูลผู้ใช้</button></p>
       <p><button v-on:click="navigateTo('/user/edit/'+ user.id)">แก้ไขข้อมูล</button></p>
       <p><button v-on:click=deleteUser(user)>ลบข้อมูล</button></p>
+      <p><button v-on:click="logout">Logout</button></p>
       <hr>
     </div>
   </div>
@@ -18,6 +19,7 @@
 
 <script>
 import UsersService from '../../services/UsersService'
+import { useAuthenStore } from '../../stores/authen';
 
 export default {
     data () {
@@ -34,7 +36,17 @@ export default {
         }
     },
 
-
+    methods: {
+        logout () {
+            const authenStore = useAuthenStore()
+            authenStore.logout() // เรียก action logout จาก store
+            
+            this.$router.push({
+                name: 'login'
+            })
+        },
+        // ... methods อื่นๆ
+    },
   // Logic จะเขียนตรงนี้
   methods: {
     navigateTo(route) {
@@ -48,6 +60,7 @@ export default {
       this.users = (await UsersService.index()).data
     }
   },
+  
 
 
 };
